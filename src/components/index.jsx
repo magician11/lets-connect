@@ -10,6 +10,7 @@ class LetsConnect extends Component {
     this.state = {
       name: '',
       image: '',
+      location: null,
     };
 
     this.responseFacebook = this.responseFacebook.bind(this);
@@ -17,7 +18,9 @@ class LetsConnect extends Component {
 
   responseFacebook(response) {
     if (response.name) {
-      this.setState({ name: response.name, image: response.picture.data.url });
+      navigator.geolocation.getCurrentPosition((location) => {
+        this.setState({ name: response.name, image: response.picture.data.url, location });
+      });
     }
   }
 
@@ -36,9 +39,12 @@ class LetsConnect extends Component {
         />
       );
     } else {
+      const { latitude, longitude, accuracy } = this.state.location.coords;
       login = (
         <Panel>
           <h1><img src={this.state.image} alt={this.state.name} /> {this.state.name}</h1>
+          <p>Position: {latitude}, {longitude} (accurate to {accuracy} meters)</p>
+          <img src={`https://maps.googleapis.com/maps/api/staticmap?markers=${latitude},${longitude}&zoom=18&size=550x330`} alt={`Map Position of ${this.state.name}`} />
         </Panel>
       );
     }
