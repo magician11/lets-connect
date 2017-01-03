@@ -44,7 +44,7 @@ class LetsConnect extends Component {
         <Panel>
           <h1><img src={this.state.image} alt={this.state.name} /> {this.state.name}</h1>
           <p>Position: {latitude}, {longitude} (accurate to {accuracy} meters)</p>
-          <img src={`https://maps.googleapis.com/maps/api/staticmap?markers=${latitude},${longitude}&zoom=18&size=550x330`} alt={`Map Position of ${this.state.name}`} />
+          <img src={`https://maps.googleapis.com/maps/api/staticmap?markers=${latitude},${longitude}&zoom=18&size=550x330&key=AIzaSyAahNfXYiI0xosKqGiwYJhecBhLQO0kTOQ`} alt={`Map Position of ${this.state.name}`} />
         </Panel>
       );
     }
