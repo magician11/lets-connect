@@ -1,8 +1,14 @@
 :local {
   $black: #000;
   $white: #fff;
-  
-  .your-component {
-    font-family: Arial;
+  $light-blue: #00BFFF;
+
+  .lets-connect {
+    font-family: 'Arima Madurai', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $light-blue;
   }
 }
