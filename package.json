@@ -1,7 +1,7 @@
 {
-  "name": "react-starting-point",
+  "name": "lets-connect",
   "version": "1.0.0",
-  "description": "A minimalist starting point for React.js apps.",
+  "description": "Share your location and invite connections.",
   "main": "src/index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack -p",
