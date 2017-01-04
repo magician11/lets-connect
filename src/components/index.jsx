@@ -10,6 +10,7 @@ class LetsConnect extends Component {
     this.state = {
       name: '',
       image: '',
+      emailAddress: '',
       location: null,
       status: '',
     };
@@ -18,7 +19,12 @@ class LetsConnect extends Component {
   }
 
   responseFacebook(response) {
-    this.setState({ status: 'Logged into Facebook. Calculating your location...', name: response.name, image: response.picture.data.url });
+    this.setState({
+      status: 'Logged into Facebook. Calculating your location...',
+      name: response.name,
+      image: response.picture.data.url,
+      emailAddress: response.email,
+    });
     if (response.name) {
       navigator.geolocation.getCurrentPosition((location) => {
         this.setState({ location });
@@ -49,6 +55,7 @@ class LetsConnect extends Component {
       content = (
         <Panel>
           <h1><img src={this.state.image} alt={this.state.name} /> {this.state.name}</h1>
+          <p>Email Address: <a href={`mailto:${this.state.emailAddress}`}>{this.state.emailAddress}</a></p>
           <p>Position: {latitude}, {longitude} (accurate to {accuracy} meters)</p>
           <a href={`https://www.google.com/maps/search/${latitude},${longitude}`} className="text-center">
             <Image src={`https://maps.googleapis.com/maps/api/staticmap?markers=${latitude},${longitude}&zoom=18&size=550x330&key=AIzaSyAahNfXYiI0xosKqGiwYJhecBhLQO0kTOQ`} alt={`Map Position of ${this.state.name}`} thumbnail responsive />
