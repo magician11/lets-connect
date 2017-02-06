@@ -1,0 +1,16 @@
+/* THE PERSONMARKER */
+/* =============================================== */
+.person-marker {
+  background-color: #fff;
+  color: #000;
+  border-radius: 8px;
+  padding: 8px;
+  width: 111px;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  left: -111px;
+  border: 1px solid #87CEFA;
+}
+
+/* =============================================== */

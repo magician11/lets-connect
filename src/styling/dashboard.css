@@ -1,0 +1,7 @@
+.dashboard .top-margin {
+  margin-top: 1rem;
+}
+
+.dashboard a:hover {
+  text-decoration: none;
+}

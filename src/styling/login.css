@@ -1,0 +1,48 @@
+
+/* THE LOGIN SCREEN */
+/* =============================================== */
+.login {
+  background-color: #00BFFF;
+  color: #fff;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login h1 {
+  margin-bottom: 5.6rem;
+}
+
+.login svg {
+  fill: #fff;
+}
+
+/* the heart shaking hands :) */
+.heart-svg {
+  width: 50%;
+}
+
+/* Styling for the Facebook sign up button */
+.login button {
+  background-color: #3b5998;
+  color: #fff;
+  border-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.login button:hover {
+  background-color: #2d4373;
+  color: #fff;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* the facebook icon */
+.login button svg {
+  width: 2.9rem;
+  margin-right: 1rem;
+}
+/* =============================================== */
