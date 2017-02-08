@@ -33,13 +33,14 @@ export function saveBroadcast(broadcast) {
   return firebase.database().ref().child(`broadcasts/${broadcast.user.uid}`)
   .set({
     name: broadcast.user.displayName,
-    email: broadcast.user.email,
     photo: broadcast.user.photoURL,
     reason: broadcast.reason,
     duration: broadcast.duration,
     coordinates: { latitude, longitude },
     positionAccuracy: accuracy,
     sentAt: moment().toString(),
+    bio: broadcast.bio,
+    locationDescription: broadcast.locationDescription,
   });
 }
 

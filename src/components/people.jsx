@@ -49,18 +49,18 @@ class People extends Component {
       content = <Loader loaderStatus='Working out where you are' />;
     }
     else {
-const panelTitle = <h4>Total broadcasts: {this.state.broadcasts.length}</h4>;
+      const panelTitle = <h4>Total broadcasts: {this.state.broadcasts.length}</h4>;
 
       content = (
-          <Panel header={panelTitle} className="map">
-            <GoogleMap
-              bootstrapURLKeys={{ key: "AIzaSyApt0vS9E9QJpjPfUFQp8Nyztq80HQml8A" }}
-              defaultCenter={{lat: this.state.currentLocation.coords.latitude, lng: this.state.currentLocation.coords.longitude}}
-              defaultZoom={14}
-            >
-              { this.state.broadcasts.map(broadcast => <PersonMarker text={broadcast.name} lat={broadcast.coordinates.latitude} lng={broadcast.coordinates.longitude} key={broadcast.uid} /> )}
-            </GoogleMap>
-          </Panel>
+        <Panel header={panelTitle} className="map">
+          <GoogleMap
+            bootstrapURLKeys={{ key: "AIzaSyApt0vS9E9QJpjPfUFQp8Nyztq80HQml8A" }}
+            defaultCenter={{lat: this.state.currentLocation.coords.latitude, lng: this.state.currentLocation.coords.longitude}}
+            defaultZoom={14}
+          >
+            { this.state.broadcasts.map(broadcast => <PersonMarker text={broadcast.name} lat={broadcast.coordinates.latitude} lng={broadcast.coordinates.longitude} key={broadcast.uid} /> )}
+          </GoogleMap>
+        </Panel>
         );
       }
 

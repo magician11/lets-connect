@@ -12,6 +12,8 @@ class Broadcast extends Component {
       location: null,
       reason: '',
       duration: '1 hour',
+      bio: '',
+      description: '',
       broadcastComplete: false,
       broadcasting: false,
     };
@@ -28,7 +30,14 @@ class Broadcast extends Component {
 
   broadcast() {
     this.setState({broadcasting: true});
-    saveBroadcast({user: this.props.user, location: this.state.location, reason: this.state.reason, duration: this.state.duration})
+    saveBroadcast({
+      user: this.props.user,
+      location: this.state.location,
+      reason: this.state.reason,
+      duration: this.state.duration,
+      bio: this.state.bio,
+      locationDescription: this.state.description,
+    })
     .then(() => this.setState({broadcastComplete: true, broadcasting: false}));
   }
 
@@ -62,7 +71,7 @@ class Broadcast extends Component {
           <p>Great, we have you.</p>
           <Image src={`https://maps.googleapis.com/maps/api/staticmap?markers=${latitude},${longitude}&zoom=18&size=550x330&key=AIzaSyAahNfXYiI0xosKqGiwYJhecBhLQO0kTOQ`} alt={`Map Position of ${this.props.user.displayName}`} thumbnail responsive />
           <h2>Almost there..</h2>
-          <p>We need just a couple more bits of info before we share your location.</p>
+          <p>We need just a few more bits of info before we share your location.</p>
           <Well>
             <form>
               <FormGroup controlId="reason">
@@ -71,6 +80,24 @@ class Broadcast extends Component {
                   type="text"
                   value={this.state.reason}
                   placeholder="e.g. I'd like to co-work with others."
+                  onChange={this.updateInput}
+                />
+              </FormGroup>
+              <FormGroup controlId="bio">
+                <ControlLabel>Tell us a little about yourself. Give us a feel for who you are!</ControlLabel>
+                <FormControl
+                  componentClass="textarea"
+                  value={this.state.bio}
+                  placeholder="e.g. I'm a web developer and a counsellor. I love 1-on-1 connection with people."
+                  onChange={this.updateInput}
+                />
+              </FormGroup>
+              <FormGroup controlId="description">
+                <ControlLabel>Describe where you are exactly. How can we identify you?</ControlLabel>
+                <FormControl
+                  type="text"
+                  value={this.state.description}
+                  placeholder="e.g. I'm at WakeUp on the 3rd floor. I'm wearing a blue t-shirt."
                   onChange={this.updateInput}
                 />
               </FormGroup>
@@ -93,7 +120,7 @@ class Broadcast extends Component {
               </FormGroup>
             </form>
           </Well>
-          { this.state.reason && this.state.duration &&
+          { this.state.reason && this.state.duration && this.state.bio && this.state.description &&
             <div>
               <p>Here is the data we will broadcast.</p>
               <Panel>
@@ -104,8 +131,10 @@ class Broadcast extends Component {
                   <dd>{this.props.user.displayName}</dd>
                   <dt>Intention</dt>
                   <dd>{this.state.reason}</dd>
-                  <dt>Email address</dt>
-                  <dd>{this.props.user.email}</dd>
+                  <dt>How to find you</dt>
+                  <dd>{this.state.description}</dd>
+                  <dt>About you</dt>
+                  <dd>{this.state.bio}</dd>
                   <dt>Location</dt>
                   <dd>{latitude}, {longitude}</dd>
                   <dd><sup>*</sup>accurate to within {accuracy} meters</dd>
