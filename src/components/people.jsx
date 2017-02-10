@@ -58,18 +58,24 @@ class People extends Component {
             defaultCenter={{lat: this.state.currentLocation.coords.latitude, lng: this.state.currentLocation.coords.longitude}}
             defaultZoom={14}
           >
-            { this.state.broadcasts.map(broadcast => <PersonMarker text={broadcast.name} lat={broadcast.coordinates.latitude} lng={broadcast.coordinates.longitude} key={broadcast.uid} /> )}
+            { this.state.broadcasts.map(broadcast =>
+              <PersonMarker
+                broadcast={broadcast}
+                lat={broadcast.coordinates.latitude}
+                lng={broadcast.coordinates.longitude}
+                key={broadcast.uid}
+              /> )}
           </GoogleMap>
         </Panel>
+          );
+        }
+
+        return (
+          <Grid className="people">
+            { content }
+          </Grid>
         );
       }
-
-      return (
-        <Grid className="people">
-          { content }
-        </Grid>
-      );
     }
-  }
 
-  export default People;
+    export default People;
