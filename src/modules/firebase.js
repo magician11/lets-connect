@@ -22,7 +22,6 @@ export function fbLogin() {
     // The signed-in user info.
     var user = result.user;
     console.log(`${user.displayName} successfully logged in via Facebook.`);
-    console.log(user);
   }).catch(function(error) {
     console.log(`Oops.. there was an issue with logging in: ${error.message}`);
   });

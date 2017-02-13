@@ -16,7 +16,7 @@ return (
       </Col>
     </Row>
     <br />
-    <p>This app allows you to connect with people around you.</p>
+    <p>This app allows you to connect with people around you. For more details <Link to="/faq">click here</Link>.</p>
     <p>Would you like to:</p>
     <ol>
       <li>share your location so people come to you, or</li>

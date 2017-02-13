@@ -23,14 +23,18 @@ class People extends Component {
     then get the user's current location.
     */
     const updateBroadasts = (broadcasts) => {
-      const people = [];
-      for (let [uid, broadcast] of Object.entries(broadcasts)) {
-        const aBroadcast = broadcast;
-        aBroadcast.uid = uid;
-        people.push(aBroadcast);
+      if (broadcasts === null) {
+        this.setState({broadcasts: [] });
+      } else {
+        const people = [];
+        for (let [uid, broadcast] of Object.entries(broadcasts)) {
+          const aBroadcast = broadcast;
+          aBroadcast.uid = uid;
+          people.push(aBroadcast);
+        }
+        
+        this.setState({broadcasts: people });
       }
-
-      this.setState({broadcasts: people });
 
       navigator.geolocation.getCurrentPosition((location) => {
         this.setState({ currentLocation: location });

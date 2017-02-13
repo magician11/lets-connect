@@ -6,6 +6,7 @@ import Dashboard from './dashboard';
 import Broadcast from './broadcast';
 import People from './people';
 import Loader from './loader';
+import Faq from './faq';
 import Footer from './footer';
 import Login from './login';
 import { firebaseAuth } from '../modules/firebase';
@@ -63,6 +64,7 @@ export default class App extends Component {
                   <Match render={props => <Dashboard user={this.state.user} {...props} />} pattern='/' exactly />
                   <Match render={props => <Broadcast user={this.state.user} {...props} />} pattern='/broadcast' exactly />
                   <Match render={props => <People user={this.state.user} {...props} />} pattern='/people' exactly />
+                  <Match render={Faq} pattern='/faq' exactly />
                   <Miss render={() => <h3>Whoops! How did you get here? :)</h3>} />
                 </Row>
               </Grid>
@@ -70,9 +72,9 @@ export default class App extends Component {
             </div>
           )}
         </BrowserRouter>
-      );
-    }
-
-    return content;
+    );
   }
+
+  return content;
+}
 }
